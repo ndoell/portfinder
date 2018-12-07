@@ -1,18 +1,13 @@
 package main
 
 import (
-//	"math/rand"
-//	"time"
 	"net"
 	"log"
 	"fmt"
 )
 
-//func randport(min, max int) int {
-//	return rand.Intn(max - min) + min
-//}
 
-//Check if a port is open by connecting.
+//Get an open port from kernel by using ResolveTCPAddr then test by using ListenTCP.
 func GetFreePort() (int, error) {
 	addr, err := net.ResolveTCPAddr("tcp", "localhost:0")
 	if err != nil {
@@ -28,9 +23,6 @@ func GetFreePort() (int, error) {
 }
 
 func main() {
-//	rand.Seed(time.Now().UTC().UnixNano())
-//	GetFreePort(randport(5000, 9000))
-
 	port, err := GetFreePort()
 	if err != nil {
 		log.Fatal(err)
